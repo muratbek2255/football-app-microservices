@@ -23,6 +23,9 @@
 
     <modules>
         <module>discovery-server</module>
+        <module>game-tour-service</module>
+        <module>club-player-service</module>
+        <module>authentication-service</module>
     </modules>
 
     <packaging>pom</packaging>

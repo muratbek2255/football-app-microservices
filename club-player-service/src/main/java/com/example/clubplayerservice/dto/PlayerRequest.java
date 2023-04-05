@@ -7,15 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+
 @Getter
 @Setter
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ClubRequest {
-
-    Integer id;
-
-    String name;
-
-    Integer rank;
+public class PlayerRequest {
 }

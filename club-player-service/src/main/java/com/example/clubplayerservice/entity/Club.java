@@ -28,4 +28,7 @@ public class Club {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "trophy_id")
     Trophy trophy;
+
+    @Column(name = "rank")
+    Integer rank;
 }
