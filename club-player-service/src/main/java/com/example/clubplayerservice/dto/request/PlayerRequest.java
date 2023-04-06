@@ -17,6 +17,7 @@ import lombok.experimental.FieldDefaults;
 public class PlayerRequest {
 
     Integer id;
+
     String avatar;
 
     String name;
