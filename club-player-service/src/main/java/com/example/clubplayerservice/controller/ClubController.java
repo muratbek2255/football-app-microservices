@@ -5,6 +5,7 @@ import com.example.clubplayerservice.dto.request.ClubRequest;
 import com.example.clubplayerservice.dto.response.ClubByRankResponse;
 import com.example.clubplayerservice.dto.response.ClubByTrophyNameResponse;
 import com.example.clubplayerservice.dto.response.ClubResponse;
+import com.example.clubplayerservice.entity.Club;
 import com.example.clubplayerservice.service.ClubServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -62,7 +63,7 @@ public class ClubController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClubResponse> getByIdClub(@PathVariable int id) {
+    public ResponseEntity<Club> getByIdClub(@PathVariable int id) {
 
         return ResponseEntity.status(200).body(clubService.getById(id));
     }

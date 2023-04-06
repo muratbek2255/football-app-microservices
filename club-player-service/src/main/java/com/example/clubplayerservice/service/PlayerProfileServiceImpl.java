@@ -5,7 +5,6 @@ import com.example.clubplayerservice.dto.request.PlayerRequest;
 import com.example.clubplayerservice.entity.Club;
 import com.example.clubplayerservice.entity.History;
 import com.example.clubplayerservice.entity.PlayerProfile;
-import com.example.clubplayerservice.repository.ClubRepository;
 import com.example.clubplayerservice.repository.HistoryRepository;
 import com.example.clubplayerservice.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,15 @@ public class PlayerProfileServiceImpl implements PlayerProfileService {
 
     private final PlayerRepository playerRepository;
 
-    private ClubRepository clubRepo;
+    private final ClubServiceImpl clubService;
 
-    private HistoryRepository historyRepository;
+    private final HistoryRepository historyRepository;
 
     @Autowired
-    public PlayerProfileServiceImpl(PlayerRepository playerRepository) {
+    public PlayerProfileServiceImpl(PlayerRepository playerRepository, ClubServiceImpl clubService, HistoryRepository historyRepository) {
         this.playerRepository = playerRepository;
+        this.clubService = clubService;
+        this.historyRepository = historyRepository;
     }
 
     @Override
@@ -31,8 +32,7 @@ public class PlayerProfileServiceImpl implements PlayerProfileService {
 
         PlayerProfile playerProfile = new PlayerProfile();
 
-        Club club = clubRepo.getById(playerRequest.getClub().getId());
-
+        Club club = clubService.getById(playerRequest.getClub().getId());
 
         playerProfile.setAvatar(playerRequest.getAvatar());
         playerProfile.setName(playerRequest.getName());
