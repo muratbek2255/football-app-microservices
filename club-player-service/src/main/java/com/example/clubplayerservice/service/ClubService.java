@@ -11,6 +11,8 @@ public interface ClubService {
 
     public List<ClubResponse> getAllClub();
 
+    public ClubResponse getById(int id);
+
     public String addClub(ClubRequest clubRequest);
 
     public String updateClub(int id, ClubRequest clubRequest);

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -33,6 +34,20 @@ public class ClubServiceImpl implements ClubService {
         List<Club> clubs = clubRepository.findAll();
 
         return clubs.stream().map((map) -> ClubMapper.mapToClubResponse(map)).collect(Collectors.toList());
+    }
+
+    @Override
+    public ClubResponse getById(int id) {
+
+        Club club = clubRepository.getById(id);
+
+        ClubResponse clubResponse = new ClubResponse();
+
+        clubResponse.setId(club.getId());
+        clubResponse.setRank(club.getRank());
+        clubResponse.setName(club.getName());
+
+        return clubResponse;
     }
 
 

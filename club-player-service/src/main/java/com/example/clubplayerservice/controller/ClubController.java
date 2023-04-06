@@ -60,4 +60,10 @@ public class ClubController {
 
         return ResponseEntity.status(200).body(clubService.getClubByTrophy(nameOfTrophy));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ClubResponse> getByIdClub(@PathVariable int id) {
+
+        return ResponseEntity.status(200).body(clubService.getById(id));
+    }
 }
