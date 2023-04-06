@@ -25,7 +25,7 @@ public class StatisticsController {
     @PostMapping("/addGoal")
     public ResponseEntity<String> addGoalForPlayerStatistics(@Param("name") StatisticsRequest statisticsRequest) {
 
-        return ResponseEntity.status(201).body(statisticsService.addAssistForPlayerStatistics(statisticsRequest));
+        return ResponseEntity.status(201).body(statisticsService.addGoalForPlayerStatistics(statisticsRequest));
     }
 
     @PostMapping("/addAssist")

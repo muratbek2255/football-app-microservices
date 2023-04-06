@@ -20,14 +20,16 @@ public class HistoryServiceImpl implements HistoryService {
 
     private final HistoryRepository historyRepository;
 
-    private ClubRepository clubRepository;
+    private final ClubRepository clubRepository;
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
 
     @Autowired
-    public HistoryServiceImpl(HistoryRepository historyRepository) {
+    public HistoryServiceImpl(HistoryRepository historyRepository, ClubRepository clubRepository, PlayerRepository playerRepository) {
         this.historyRepository = historyRepository;
+        this.clubRepository = clubRepository;
+        this.playerRepository = playerRepository;
     }
 
     @Override
@@ -51,7 +53,8 @@ public class HistoryServiceImpl implements HistoryService {
     @Override
     public GetPlayersByHisLastAndNowClubResponse getPlayersByHisClub(String nameOfClub) {
 
-        List<History> playerProfile = historyRepository.findByPlayerProfile_Club_Name(nameOfClub);
+        List<History> playerProfile = historyRepository.findByClubName(nameOfClub);
+        System.out.println(playerProfile);
 
         GetPlayersByHisLastAndNowClubResponse clubResponse = new GetPlayersByHisLastAndNowClubResponse();
 

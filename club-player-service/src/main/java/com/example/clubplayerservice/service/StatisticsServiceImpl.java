@@ -21,12 +21,19 @@ public class StatisticsServiceImpl implements StatisticsService {
     public String addGoalForPlayerStatistics(StatisticsRequest statisticsRequest) {
 
         PlayerStatistics playerStatistics = statisticsRepository.findByPlayerProfile_Name(statisticsRequest.getName());
+        System.out.println(playerStatistics);
 
-        playerStatistics.setGoal(playerStatistics.getGoal() + 1);
+        if(playerStatistics == null) {
+            return "Sorry in DB haven't this player";
+        }
+        else {
 
-        statisticsRepository.save(playerStatistics);
+            playerStatistics.setGoal(playerStatistics.getGoal() + 1);
 
-        return playerStatistics.getPlayerProfile().getName() + "Score Goal!";
+            statisticsRepository.save(playerStatistics);
+
+            return playerStatistics.getPlayerProfile().getName() + "Score Goal!";
+        }
     }
 
     @Override
@@ -34,10 +41,15 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         PlayerStatistics playerStatistics = statisticsRepository.findByPlayerProfile_Name(statisticsRequest.getName());
 
-        playerStatistics.setGoal(playerStatistics.getAssist() + 1);
+        if(playerStatistics == null) {
+            return "Sorry in DB haven't this player";
+        }
+        else {
+            playerStatistics.setGoal(playerStatistics.getAssist() + 1);
 
-        statisticsRepository.save(playerStatistics);
+            statisticsRepository.save(playerStatistics);
 
-        return playerStatistics.getPlayerProfile().getName() + "Do Assist!";
+            return playerStatistics.getPlayerProfile().getName() + "Do Assist!";
+        }
     }
 }

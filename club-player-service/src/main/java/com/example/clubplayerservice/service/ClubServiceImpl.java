@@ -41,14 +41,6 @@ public class ClubServiceImpl implements ClubService {
 
         Club club = clubRepository.getById(id);
 
-//        ClubResponse clubResponse = new ClubResponse();
-//
-//        clubResponse.setId(club.getId());
-//        clubResponse.setRank(club.getRank());
-//        clubResponse.setName(club.getName());
-//
-//        return clubResponse;
-
         return club;
     }
 

@@ -22,5 +22,27 @@ public class GameTour {
     @Column(name = "id")
     Integer id;
 
+    @Column(name = "firstTeam")
+    String firstTeam;
 
+    @Column(name = "secondTeam")
+    String secondTeam;
+
+    @Column(name = "score")
+    Integer score1;
+
+    @Column(name = "score_2")
+    Integer score2;
+
+    @Column(name = "goalscorer")
+    String goalscorer1;
+
+    @Column(name = "assistant")
+    String assistant1;
+
+    @Column(name = "goalscorer2")
+    String goalscorer2;
+
+    @Column(name = "assistant2")
+    String assistant2;
 }
