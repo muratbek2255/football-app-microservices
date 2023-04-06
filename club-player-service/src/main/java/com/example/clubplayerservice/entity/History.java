@@ -8,14 +8,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Timestamp;
+
 
 @Entity
 @RequiredArgsConstructor
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "player_statistics")
-public class ClubAndPlayerHistory {
+@Table(name = "histories")
+public class History {
 
 
     @Id
@@ -32,8 +34,8 @@ public class ClubAndPlayerHistory {
     PlayerProfile playerProfile;
 
     @Column(name = "in_team_with")
-    String inTeamWith;
+    Timestamp inTeamWith;
 
     @Column(name = "until_with_team")
-    String untilWithTeam;
+    Timestamp untilWithTeam;
 }

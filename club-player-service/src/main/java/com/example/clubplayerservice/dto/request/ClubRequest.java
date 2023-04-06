@@ -1,4 +1,4 @@
-package com.example.clubplayerservice.dto;
+package com.example.clubplayerservice.dto.request;
 
 
 import lombok.AccessLevel;
@@ -11,10 +11,11 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class HistoryRequest {
+public class ClubRequest {
 
-    ClubRequest clubRequest;
+    Integer id;
 
-    PlayerRequest playerRequest;
+    String name;
 
+    Integer rank;
 }

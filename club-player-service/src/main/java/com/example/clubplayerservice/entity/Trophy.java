@@ -24,8 +24,4 @@ public class Trophy {
 
     @Column(name = "name")
     String name;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "player_id")
-    PlayerProfile playerProfile;
 }

@@ -32,7 +32,7 @@ public class PlayerProfile {
     String surname;
 
     @Column(name = "age")
-    String age;
+    Integer age;
 
     @Column(name = "nations")
     String nations;

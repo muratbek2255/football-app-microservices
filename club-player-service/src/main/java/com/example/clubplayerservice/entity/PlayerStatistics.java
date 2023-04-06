@@ -31,12 +31,10 @@ public class PlayerStatistics {
     @Column(name = "assist")
     Integer assist;
 
-    @Column(name = "yellow_card")
-    Integer yellowCard;
-
-    @Column(name = "red_card")
-    Integer redCard;
-
     @Column(name = "kpd")
     Integer kpd;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "player_id")
+    PlayerProfile playerProfile;
 }
