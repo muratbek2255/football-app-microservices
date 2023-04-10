@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @FeignClient(name = "club-player-service", url = "http://localhost:8083")
 public interface PlayerStatisticsClient {
 

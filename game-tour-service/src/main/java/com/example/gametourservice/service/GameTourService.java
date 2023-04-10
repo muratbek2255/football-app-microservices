@@ -9,4 +9,6 @@ public interface GameTourService {
     public String addGameTour(GameTourRequest gameTourRequest);
 
     public String whoScored(GoalScorerRequest goalScorerRequest, int id, StatisticsRequest statisticsRequest);
+
+    public String whoAssisted(GoalScorerRequest goalScorerRequest, int id, StatisticsRequest statisticsRequest);
 }

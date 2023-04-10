@@ -31,6 +31,8 @@ public class GameTourServiceImpl implements GameTourService {
         gameTour.setFirstTeam(gameTourRequest.getFirstTeam());
         gameTour.setSecondTeam(gameTourRequest.getLastTeam());
 
+        gameTourRepository.save(gameTour);
+
         return "Add match";
     }
 
@@ -43,12 +45,15 @@ public class GameTourServiceImpl implements GameTourService {
 
             gameTour.setScore1(gameTour.getScore1() + 1);
             gameTour.setGoalscorer1(goalScorerRequest.getGoalscorer1());
+            gameTour.setAssistant1(goalScorerRequest.getAssistant1());
 
             statisticsRequest.setName(goalScorerRequest.getGoalscorer1());
 
+            gameTourRepository.save(gameTour);
+
             playerStatisticsClient.addGoalForPlayerStatistics(statisticsRequest);
 
-            return "WUY";
+            return "Goalscorer from first team";
         }
         else {
 
@@ -57,9 +62,40 @@ public class GameTourServiceImpl implements GameTourService {
 
             statisticsRequest.setName(goalScorerRequest.getGoalscorer2());
 
+            gameTourRepository.save(gameTour);
+
             playerStatisticsClient.addGoalForPlayerStatistics(statisticsRequest);
 
-            return "SHUY";
+            return "GoalScorer from second team";
+        }
+    }
+
+    @Override
+    public String whoAssisted(GoalScorerRequest goalScorerRequest, int id, StatisticsRequest statisticsRequest) {
+        GameTour gameTour = gameTourRepository.getById(id);
+
+        if(goalScorerRequest.isGoal1()) {
+
+            gameTour.setAssistant1(gameTour.getAssistant1());
+
+            gameTourRepository.save(gameTour);
+
+            statisticsRequest.setName(goalScorerRequest.getAssistant1());
+
+            playerStatisticsClient.addAssistForPlayerStatistics(statisticsRequest);
+
+            return "Assistant from first team";
+        } else {
+
+            gameTour.setAssistant1(gameTour.getAssistant2());
+
+            gameTourRepository.save(gameTour);
+
+            statisticsRequest.setName(goalScorerRequest.getAssistant2());
+
+            playerStatisticsClient.addAssistForPlayerStatistics(statisticsRequest);
+
+            return "Assistant from second team";
         }
     }
 }

@@ -22,10 +22,10 @@ public class GameTour {
     @Column(name = "id")
     Integer id;
 
-    @Column(name = "firstTeam")
+    @Column(name = "first_team")
     String firstTeam;
 
-    @Column(name = "secondTeam")
+    @Column(name = "second_team")
     String secondTeam;
 
     @Column(name = "score")
